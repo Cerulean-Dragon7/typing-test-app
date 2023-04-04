@@ -14,5 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         println("this is the second commit test");
+        println("this is branch change");
     }
 }

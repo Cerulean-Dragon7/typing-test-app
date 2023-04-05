@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Typing_test_app"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".MainScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

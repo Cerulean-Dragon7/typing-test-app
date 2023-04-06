@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Typing_test_app"
         tools:targetApi="31">
         <activity
+            android:name=".AchievmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".WordTestActivity"
             android:exported="false" />
         <activity

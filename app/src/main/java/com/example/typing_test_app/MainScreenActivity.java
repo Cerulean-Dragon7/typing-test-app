@@ -33,6 +33,8 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 startActivity(i1);
                 break;
             case R.id.test_word_button: //word test screen
+                Intent i2 = new Intent(MainScreenActivity.this,WordTestActivity.class);
+                startActivity(i2);
                 break;
             case R.id.history_button: //history screen
                 Intent i3 = new Intent(MainScreenActivity.this,TestHistoryActivity.class);

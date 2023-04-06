@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Typing_test_app"
         tools:targetApi="31">
         <activity
+            android:name=".RecordDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainScreenActivity"
             android:exported="true">
             <intent-filter>

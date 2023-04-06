@@ -58,7 +58,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/name_hit"
+                android:id="@+id/name_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
@@ -74,7 +74,7 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/country_hit"
+                android:id="@+id/country_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"

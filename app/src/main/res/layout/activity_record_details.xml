@@ -47,7 +47,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/name_hits"
+                android:id="@+id/name_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -57,7 +57,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/name_data"
+                android:id="@+id/RD_name_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -74,17 +74,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/speed_hits"
+                android:id="@+id/speed_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="Speed"
+                android:text="@string/speed_text"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/speed_data"
+                android:id="@+id/RD_speed_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -101,17 +101,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/accuracy_hits"
+                android:id="@+id/accuracy_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="Accuracy"
+                android:text="@string/accuracy_text"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/accuracy_data"
+                android:id="@+id/RD_accuracy_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -128,7 +128,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/right_word_hits"
+                android:id="@+id/right_word_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -138,7 +138,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/right_word_data"
+                android:id="@+id/RD_right_word_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -155,7 +155,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/wrong_word_hits"
+                android:id="@+id/wrong_word_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -165,7 +165,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/wrong_word_data"
+                android:id="@+id/RD_wrong_word_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -182,7 +182,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/date_hits"
+                android:id="@+id/date_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -192,7 +192,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/date_data"
+                android:id="@+id/RD_date_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -209,7 +209,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/test_mode_hits"
+                android:id="@+id/test_mode_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -219,7 +219,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/test_mode_data"
+                android:id="@+id/RD_test_mode_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -236,7 +236,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/duration_hits"
+                android:id="@+id/duration_hint"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -246,7 +246,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/duration_data"
+                android:id="@+id/RD_duration_data"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -256,7 +256,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/original_hits"
+            android:id="@+id/original_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -266,14 +266,14 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/original_data"
+            android:id="@+id/RD_original_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/typed_hits"
+            android:id="@+id/typed_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_gray"
@@ -282,7 +282,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/typed_data"
+            android:id="@+id/RD_typed_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background_gray"

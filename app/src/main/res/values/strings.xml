@@ -3,4 +3,11 @@
     <string name="profile_title">Profile</string>
     <string name="test_history_title">Test History</string>
     <string name="record_details_title">Record Details</string>
+    <string name="character_test_title">Character Test</string>
+    <string name="word_test_title">Word Test</string>
+    <string name="correct_text">Correct</string>
+    <string name="wrong_text">Wrong</string>
+    <string name="accuracy_text">Accuracy</string>
+    <string name="speed_text">Speed</string>
+    <string name="time_text">Time</string>
 </resources>

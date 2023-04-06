@@ -7,35 +7,46 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainScreenActivity extends AppCompatActivity {
-    Button testButton, historyButton, boardButton,
-            achievementButton, profileButton, aboutUsButton;
+public class MainScreenActivity extends AppCompatActivity implements View.OnClickListener{
+    Button button_array[] = new Button[6];
+
+    private static final int button_id[] = {R.id.test_char_button, R.id.test_word_button,R.id.history_button,
+            R.id.achievement_button, R.id.profile_button, R.id.credit_button};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainscreen);
-        testButton = findViewById(R.id.test_button);
-        historyButton = findViewById(R.id.history_button);
-        boardButton = findViewById(R.id.scoreboard_button);
-        achievementButton = findViewById(R.id.achievement_button);
-        profileButton = findViewById(R.id.profile_button);
-        aboutUsButton = findViewById(R.id.credit_button);
 
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i =new Intent(MainScreenActivity.this,ProfileActivity.class);
-                startActivity(i);
-            }
-        });
+    for (int i=0; i< button_id.length; i++){
+        button_array[i] = findViewById(button_id[i]);
+        button_array[i].setOnClickListener(this);
+    }
 
-        historyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i =new Intent(MainScreenActivity.this,TestHistoryActivity.class);
-                startActivity(i);
-            }
-        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.test_char_button: //character test screen
+                Intent i1 = new Intent(MainScreenActivity.this,CharacterTestActivity.class);
+                startActivity(i1);
+                break;
+            case R.id.test_word_button: //word test screen
+                break;
+            case R.id.history_button: //history screen
+                Intent i3 = new Intent(MainScreenActivity.this,TestHistoryActivity.class);
+                startActivity(i3);
+                break;
+            case R.id.achievement_button: //achievement screen
+                break;
+            case R.id.profile_button: //profile screen
+                Intent i5 = new Intent(MainScreenActivity.this, ProfileActivity.class);
+                startActivity(i5);
+                break;
+            case R.id.credit_button: //about us screen
+                break;
+
+        }
     }
 }

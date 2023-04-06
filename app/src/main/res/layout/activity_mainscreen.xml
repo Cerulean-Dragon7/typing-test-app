@@ -74,7 +74,7 @@
                         android:layout_weight="2"
                         android:background="@drawable/right_singleline"
                         android:drawableTop="@drawable/keyboard_image"
-                        android:text="Take\nA Test"
+                        android:text="@string/test"
                         android:textColor="@color/black"
                         app:backgroundTint="@null" />
 
@@ -146,8 +146,30 @@
                 <LinearLayout
                     android:id="@+id/MS_LL_H_Container_other"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"></LinearLayout>
+                    android:layout_height="100dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/profile_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/right_singleline"
+                        android:backgroundTint="@null"
+                        android:drawableTop="@drawable/profile_image"
+                        android:paddingTop="20dp"
+                        android:text="Profile" />
+
+                    <Button
+                        android:id="@+id/credit_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:drawableTop="@drawable/aboutus_image"
+                        android:paddingTop="20dp"
+                        android:text="About us" />
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

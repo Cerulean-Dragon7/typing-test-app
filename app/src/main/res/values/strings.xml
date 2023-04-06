@@ -5,6 +5,8 @@
     <string name="record_details_title">Record Details</string>
     <string name="character_test_title">Character Test</string>
     <string name="word_test_title">Word Test</string>
+    <string name="achievement_title">Achievement</string>
+    <string name="about_us_title">About us</string>
     <string name="correct_text">Correct</string>
     <string name="wrong_text">Wrong</string>
     <string name="accuracy_text">Accuracy</string>

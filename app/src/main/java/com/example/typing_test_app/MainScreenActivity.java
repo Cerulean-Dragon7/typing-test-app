@@ -41,12 +41,16 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 startActivity(i3);
                 break;
             case R.id.achievement_button: //achievement screen
+                Intent i4 = new Intent(MainScreenActivity.this,AchievementActivity.class);
+                startActivity(i4);
                 break;
             case R.id.profile_button: //profile screen
                 Intent i5 = new Intent(MainScreenActivity.this, ProfileActivity.class);
                 startActivity(i5);
                 break;
             case R.id.credit_button: //about us screen
+                Intent i6 = new Intent(MainScreenActivity.this, AboutusActivity.class);
+                startActivity(i6);
                 break;
 
         }

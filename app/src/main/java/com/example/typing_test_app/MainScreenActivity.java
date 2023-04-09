@@ -30,31 +30,7 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.test_char_button: //character test screen
-                Intent i1 = new Intent(MainScreenActivity.this,CharacterTestActivity.class);
-                startActivity(i1);
-                break;
-            case R.id.test_word_button: //word test screen
-                Intent i2 = new Intent(MainScreenActivity.this,WordTestActivity.class);
-                startActivity(i2);
-                break;
-            case R.id.history_button: //history screen
-                Intent i3 = new Intent(MainScreenActivity.this,TestHistoryActivity.class);
-                startActivity(i3);
-                break;
-            case R.id.achievement_button: //achievement screen
-                Intent i4 = new Intent(MainScreenActivity.this,AchievementActivity.class);
-                startActivity(i4);
-                break;
-            case R.id.profile_button: //profile screen
-                Intent i5 = new Intent(MainScreenActivity.this, ProfileActivity.class);
-                startActivity(i5);
-                break;
-            case R.id.credit_button: //about us screen
-                Intent i6 = new Intent(MainScreenActivity.this, AboutusActivity.class);
-                startActivity(i6);
-                break;
+
         }
     }
 }
-//HI

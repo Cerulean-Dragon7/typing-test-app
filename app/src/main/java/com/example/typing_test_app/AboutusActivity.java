@@ -26,4 +26,3 @@ public class AboutusActivity extends AppCompatActivity {
         });
     }
 }
-//HI

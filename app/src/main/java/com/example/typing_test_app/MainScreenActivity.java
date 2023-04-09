@@ -1,5 +1,7 @@
 package com.example.typing_test_app;
 
+import static java.sql.DriverManager.println;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -52,7 +54,6 @@ public class MainScreenActivity extends AppCompatActivity implements View.OnClic
                 Intent i6 = new Intent(MainScreenActivity.this, AboutusActivity.class);
                 startActivity(i6);
                 break;
-
         }
     }
 }

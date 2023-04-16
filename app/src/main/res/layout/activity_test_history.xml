@@ -42,28 +42,58 @@
         <LinearLayout
             android:id="@+id/TH_LL_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/char_button"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/background_orange"
-                android:text="character"
+                android:background="@color/background_orange"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Character"
                 android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/word_button"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/background_orange"
-                android:text="word"
+                android:background="@color/background_orange"
+                android:drawablePadding="10dp"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="Word"
                 android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TH_LL_button_charAndword"
+            android:layout_width="match_parent"
+            android:layout_height="142dp"
+            android:orientation="horizontal"
+            tools:layout_weight="1">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="bbd0WPM\n11-03-20230%Accuracy" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="aad0WPM\n11-03-20230%Accuracy" />
         </LinearLayout>
 
     </LinearLayout>
+
 </RelativeLayout>

@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="bbd                     0WPM\n11-03-2023         0%Accuracy" />
+                android:text="bbd0WPM\n11-03-20230%Accuracy" />
 
             <Button
                 android:id="@+id/button2"
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                android:text="aad                     0WPM\n11-03-2023         0%Accuracy" />
+                android:text="aad0WPM\n11-03-20230%Accuracy" />
         </LinearLayout>
 
     </LinearLayout>

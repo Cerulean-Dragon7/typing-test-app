@@ -30,12 +30,27 @@
 
             <TextView
                 android:id="@+id/WT_title"
-                android:layout_width="370dp"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/word_test_title"
                 android:textColor="@color/white"
                 android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/difficultytext"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="nightmare"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/difficultySpinner"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -194,13 +209,11 @@
             android:id="@+id/word_type_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginRight="150dp"
             android:ems="10"
             android:gravity="center"
             android:hint="Type"
             android:inputType="textPersonName"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
 
         <TextView
             android:id="@+id/WT_original_hint"

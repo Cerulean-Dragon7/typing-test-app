@@ -1,6 +1,10 @@
 package com.example.typing_test_app;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -22,6 +26,8 @@ public class TextGenerator{
 
     //index 00 for char test, index 10 to 13 for word test in
     String[][] typeArray = {{"char"},{"eng100","eng250","eng1000","eng3000"}};
+    SpannableStringBuilder typedStringBuilder = new SpannableStringBuilder();
+    SpannableStringBuilder originalStringBuilder = new SpannableStringBuilder();
 
     public TextGenerator(Context context,int type,int difficulty){
         gameType = type;
@@ -75,5 +81,20 @@ public class TextGenerator{
 
     public void setGameDifficulty(int difficulty){
         gameDifficulty = difficulty;
+    }
+
+    public SpannableStringBuilder setOriginalText(String string) {
+        originalStringBuilder.append(string).append(" ");
+        return originalStringBuilder;
+    }
+    public SpannableStringBuilder setTypedText(String string,int color ){
+
+        //Log.d("Kenneth",string);
+        SpannableString spannableString = new SpannableString(string);
+        spannableString.setSpan(new ForegroundColorSpan(color),0,string.length(),0);
+        typedStringBuilder.append(spannableString).append(" ");
+        return typedStringBuilder;
+
+
     }
 }

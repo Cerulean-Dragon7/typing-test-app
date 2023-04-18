@@ -2,10 +2,15 @@ package com.example.typing_test_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,22 +20,26 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class WordTestActivity extends AppCompatActivity {
+public class WordTestActivity extends AppCompatActivity{
 
     ImageButton backButton;
     TextView originalText;
-    TextView typedText;
+    TextView typedTextView;
     TextView difficultyText;
     TextView wordShow;
     EditText wordEditText;
     Spinner difficultySpin;
     int difficulty = 0;//word difficulty default is 0 easy
+    int color = Color.BLACK;
     final int GameType = 1; //word
+    boolean corrected = false;
     String[] difficultyString = {"easy", "normal","hard","nightmare"};
-    String word; //word show
     StringBuilder originalStringBuilder = new StringBuilder();
     StringBuilder typedStringBuilder = new StringBuilder();
     TextGenerator wordGenerator;
+    SpannableStringBuilder wordDisplayBuilder = new SpannableStringBuilder();
+    SpannableString wordDisplay;
+    SpannableStringBuilder typedDisplayBuilder = new SpannableStringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +59,7 @@ public class WordTestActivity extends AppCompatActivity {
         difficultySpin.setAdapter(aa);
 
     }
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -62,8 +72,9 @@ public class WordTestActivity extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
             difficultyText.setText(difficultyString[position]);
             difficulty = position;
-            wordBuilder(); //create a new word builder
-            getAndSetWord();
+            textBuilder(); //create a new word builder
+            getWord();
+            setWordDisplay();
         }
 
         @Override
@@ -71,47 +82,37 @@ public class WordTestActivity extends AppCompatActivity {
 
         }
     };
+
     private TextWatcher textWatcher = new TextWatcher() {
+
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*try {
-                Log.d("Kenneth","edittext"+typedText.getText().toString());
-                if (charSequence.charAt(charSequence.length()-1) == 32 ) {
-                    if (charSequence.length() == 0){
-                        Log.d("Kenneth","not type anything");
-                    }
-                    Log.d("Kenneth", "press space");
-                    setOriginalText();
-                    setTypedText();
-                    getWord();
-                    setWordShow();
-                }
-                Log.d("Kenneth", charSequence.toString());
-            } catch(IndexOutOfBoundsException ex) {
-                ex.printStackTrace();
-                Log.d("Kenneth","Index out of bound");
-            }*/
+            textChecker();
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
             String result = editable.toString().replaceAll(" ", "");
-            Log.d("Kenneth",result);
-            if (!editable.toString().equals(result)) {
+            //Log.d("Kenneth",result);
+            if (!editable.toString().equals(result)) { //if it have space delete the space
                 wordEditText.setText(result);
                 wordEditText.setSelection(result.length());
                 // alert the user
             }
             if (editable.toString().indexOf(" ") >0 ){
-                setOriginalText();
-                setTypedText();
-                getAndSetWord();
+                if(color == Color.GREEN){
+                    color = Color.BLACK;
+                }
+                originalText.setText(wordGenerator.setOriginalText(wordDisplay.toString())); //set word to original paragraph
+                typedTextView.setText(wordGenerator.setTypedText(wordEditText.getText().toString(), color)); //set the typed paragraph to typed text
+                getWord();
+                setWordDisplay();
                 wordEditText.setText("");
-                Log.d("Kenneth","string is >0");
+                //Log.d("Kenneth","string is >0");
             }
         }
     };
@@ -122,27 +123,63 @@ public class WordTestActivity extends AppCompatActivity {
         difficultySpin = findViewById(R.id.difficultySpinner);
         difficultyText = findViewById(R.id.difficultytext);
         wordShow = findViewById(R.id.word_show);
-        typedText = findViewById(R.id.WT_typed_text);
+        typedTextView = findViewById(R.id.WT_typed_text);
         wordEditText = findViewById(R.id.word_type_view);
     }
 
 
-    public void wordBuilder(){
+
+    public void textBuilder() { //init the word generator
         wordGenerator = new TextGenerator(this,GameType, difficulty);
     }
 
-    public void getAndSetWord(){
-        word = wordGenerator.getTextInRandom();
-        wordShow.setText(word);
+    public void getWord() { //get a random word
+        wordDisplay = new SpannableString(wordGenerator.getTextInRandom());
     }
 
-    public void setOriginalText(){
-        originalStringBuilder.append(word).append(" ");
-        originalText.setText(originalStringBuilder.toString());
+    public void setWordDisplay(){
+        wordShow.setText(wordDisplay);
     }
 
-    public void setTypedText(){
-        typedStringBuilder.append(wordEditText.getText().toString()).append(" ");
-        typedText.setText(typedStringBuilder.toString());
+    public void textChecker(){
+        //Log.d("Kenneth",charSequence.toString());
+        //wordDisplay.setSpan(new ForegroundColorSpan(Color.GREEN),0,position+1,0);
+        String wordString,typedString;
+        wordString = wordDisplay.toString();
+        typedString = wordEditText.getText().toString();
+        int wordStringLength = wordString.length();
+        int typedStringLength = typedString.length();
+        color = Color.BLACK;
+        try{
+            wordDisplay.setSpan(new ForegroundColorSpan(color),0,wordDisplay.length(),0); //reset to black color
+            wordShow.setText(wordDisplay);
+
+            if(wordStringLength >= typedStringLength){
+                Log.d("Kenneth","Hi");
+                for(int i=0;i < typedStringLength; i++){
+                    if(wordString.charAt(i) == typedString.charAt(i)){
+                        //Log.d("Kenneth","wordString"+wordString.charAt(i));
+                        //Log.d("Kenneth","typedString"+typedString.charAt(i));
+                        color = Color.GREEN;
+                    }
+                    else{
+                        color = Color.RED;
+                        break;
+                    }
+                }
+                wordDisplay.setSpan(new ForegroundColorSpan(color),0,typedStringLength,0);
+                wordShow.setText(wordDisplay);
+            }
+            else {
+                color = Color.RED;
+                wordDisplay.setSpan(new ForegroundColorSpan(color),0,wordStringLength,0);
+                wordShow.setText(wordDisplay);
+            }
+
+            //Log.d("Kenneth","all char are correct: "+correct);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

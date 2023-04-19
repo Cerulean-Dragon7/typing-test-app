@@ -255,38 +255,5 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/original_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingTop="5dp"
-            android:text="Original Paragraph"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/RD_original_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/typed_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_gray"
-            android:text="Typed Paragraph"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/RD_typed_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_gray"
-            android:text="TextView" />
-
     </LinearLayout>
 </RelativeLayout>

@@ -33,6 +33,7 @@ public class WordTestActivity extends AppCompatActivity{
     int color = Color.BLACK;
     final int GameType = 1; //word
     boolean corrected = false;
+    boolean timerStarted = false;
     String[] difficultyString = {"easy", "normal","hard","nightmare"};
     StringBuilder originalStringBuilder = new StringBuilder();
     StringBuilder typedStringBuilder = new StringBuilder();
@@ -40,12 +41,14 @@ public class WordTestActivity extends AppCompatActivity{
     SpannableStringBuilder wordDisplayBuilder = new SpannableStringBuilder();
     SpannableString wordDisplay;
     SpannableStringBuilder typedDisplayBuilder = new SpannableStringBuilder();
+    TestDataManager wordDataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_test);
         initializeViews();
+        wordDataManager = new TestDataManager(this , GameType, difficulty);
 
         //set listener
         backButton.setOnClickListener(onClickListener);
@@ -57,7 +60,6 @@ public class WordTestActivity extends AppCompatActivity{
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, difficultyString);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpin.setAdapter(aa);
-
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -104,14 +106,35 @@ public class WordTestActivity extends AppCompatActivity{
                 // alert the user
             }
             if (editable.toString().indexOf(" ") >0 ){
-                if(color == Color.GREEN){
+                if(color == Color.GREEN && wordShow.length() == wordEditText.getText().length()){
                     color = Color.BLACK;
+                    //Log.d("Kenneth","In black");
                 }
+                else{
+                    color = Color.RED;
+                    //Log.d("Kenneth",String.valueOf(color));
+                    //Log.d("Kenneth","In red");
+                }
+                wordDataManager.setDataView(color);
+
+                if(!wordDataManager.getTimerRunning()){
+                    Log.d("Kenneth","timer start");
+                    wordDataManager.startTimer();   //start the timer
+                    wordGenerator.clearStringBuilder();
+                }
+
                 originalText.setText(wordGenerator.setOriginalText(wordDisplay.toString())); //set word to original paragraph
                 typedTextView.setText(wordGenerator.setTypedText(wordEditText.getText().toString(), color)); //set the typed paragraph to typed text
                 getWord();
                 setWordDisplay();
                 wordEditText.setText("");
+
+                //Log.d("Kenneth",String.valueOf(color));
+
+
+                difficultySpin.setEnabled(false);  //timer start disable difficulty spinner
+                difficultySpin.setClickable(false);
+
                 //Log.d("Kenneth","string is >0");
             }
         }
@@ -150,12 +173,14 @@ public class WordTestActivity extends AppCompatActivity{
         int wordStringLength = wordString.length();
         int typedStringLength = typedString.length();
         color = Color.BLACK;
+        corrected = false;
+
         try{
             wordDisplay.setSpan(new ForegroundColorSpan(color),0,wordDisplay.length(),0); //reset to black color
             wordShow.setText(wordDisplay);
 
             if(wordStringLength >= typedStringLength){
-                Log.d("Kenneth","Hi");
+                //Log.d("Kenneth","Hi");
                 for(int i=0;i < typedStringLength; i++){
                     if(wordString.charAt(i) == typedString.charAt(i)){
                         //Log.d("Kenneth","wordString"+wordString.charAt(i));
@@ -175,6 +200,7 @@ public class WordTestActivity extends AppCompatActivity{
                 wordDisplay.setSpan(new ForegroundColorSpan(color),0,wordStringLength,0);
                 wordShow.setText(wordDisplay);
             }
+
 
             //Log.d("Kenneth","all char are correct: "+correct);
 

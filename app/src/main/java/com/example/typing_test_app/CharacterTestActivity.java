@@ -31,6 +31,7 @@ public class CharacterTestActivity extends AppCompatActivity {
     StringBuilder originalStringBuilder = new StringBuilder();
     StringBuilder typedStringBuilder = new StringBuilder();
     TextGenerator wordGenerator;
+    TestDataManager charDataManger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class CharacterTestActivity extends AppCompatActivity {
         wordBuilder();
         getWord();
         setCTShow();
+        charDataManger = new TestDataManager(this,GameType,difficulty);
 
         //set listener
         backButton.setOnClickListener(onClickListener);
@@ -75,14 +77,25 @@ public class CharacterTestActivity extends AppCompatActivity {
                 wordTyped.setSelection(result.length());
                 // alert the user
             }
-            Log.d("Kenneth",String.valueOf(editable.toString().indexOf(" ")));
+            //Log.d("Kenneth",String.valueOf(editable.toString().indexOf(" ")));
             if (result.length() != 0){
                 textChecker();
+
+                if(!charDataManger.getTimerRunning()){
+                    Log.d("Kenneth","timer start");
+                    charDataManger.startTimer();   //start the timer
+                    wordGenerator.clearStringBuilder();
+                }
+
                 originalText.setText(wordGenerator.setOriginalText(character)); //set word to original paragraph
                 typedText.setText(wordGenerator.setTypedText(wordTyped.getText().toString(),color)); //set the typed paragraph to typed text
                 getWord();
                 setCTShow();
                 wordTyped.setText("");
+
+
+
+                charDataManger.setDataView(color);
             }
         }
     };
@@ -119,12 +132,12 @@ public class CharacterTestActivity extends AppCompatActivity {
             if(wordString.charAt(0) == typedString.charAt(0)){
                 //Log.d("Kenneth","wordString"+wordString.charAt(i));
                 //Log.d("Kenneth","typedString"+typedString.charAt(i));
-                color = Color.GREEN;
-                Log.d("Kenneth","Correct");
+                color = Color.BLACK;
+                //Log.d("Kenneth","Correct");
             }
             else {
-                Log.d("Kenneth","Wrong");
-                color = Color.BLACK;
+                //Log.d("Kenneth","Wrong");
+                color = Color.RED;
             }
             //Log.d("Kenneth","all char are correct: "+correct);
 

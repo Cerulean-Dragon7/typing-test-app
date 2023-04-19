@@ -94,7 +94,10 @@ public class TextGenerator{
         spannableString.setSpan(new ForegroundColorSpan(color),0,string.length(),0);
         typedStringBuilder.append(spannableString).append(" ");
         return typedStringBuilder;
+    }
 
-
+    public void clearStringBuilder(){
+        originalStringBuilder.clear();
+        typedStringBuilder.clear();
     }
 }
